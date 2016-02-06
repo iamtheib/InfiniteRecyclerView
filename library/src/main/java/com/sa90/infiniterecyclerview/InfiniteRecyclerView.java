@@ -85,7 +85,7 @@ public class InfiniteRecyclerView extends RecyclerView {
             int totalItemCount = mAdapter.getItemCount();
             int firstVisibleItem = mLayoutManager.findFirstVisibleItemPosition();
 
-            if (!loading &&
+            if (shouldLoadMore && !loading &&
                     (totalItemCount - visibleItemCount) <= (firstVisibleItem + mVisibleThreshold)) {
                 // End has been reached
                 loading = true;

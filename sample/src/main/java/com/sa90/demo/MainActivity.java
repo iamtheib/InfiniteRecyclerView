@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 
 import com.sa90.demo.adapter.SampleAdapter;
 import com.sa90.infiniterecyclerview.InfiniteRecyclerView;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private OnLoadMoreListener mLoadMoreListener = new OnLoadMoreListener() {
         @Override
         public void onLoadMore() {
+            Log.v("Main", "Load more fired");
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -57,19 +59,23 @@ public class MainActivity extends AppCompatActivity {
         mDummy.add("Text 7");
         mDummy.add("Text 8");
         mDummy.add("Text 9");
-        mDummy.add("Text 10");
-    }
-
-    private void addMoreData() {
         mDummy.add("Text 11");
         mDummy.add("Text 12");
         mDummy.add("Text 13");
         mDummy.add("Text 14");
         mDummy.add("Text 15");
+    }
+
+    private void addMoreData() {
         mDummy.add("Text 16");
         mDummy.add("Text 17");
         mDummy.add("Text 18");
         mDummy.add("Text 19");
         mDummy.add("Text 20");
+        mDummy.add("Text 21");
+        mDummy.add("Text 22");
+        mDummy.add("Text 23");
+        mDummy.add("Text 24");
+        mDummy.add("Text 25");
     }
 }
