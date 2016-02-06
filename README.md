@@ -41,7 +41,7 @@ API For InfiniteRecyclerView
 
 Customization
 -------
-Currently the library offers the following customization options:
+Currently the library offers the following customization options from xml:
 
  - `irv_visible_threshold`: Controls the number of scrollable items left (threshold) in the list before `OnLoadMoreListener` will be called
 
