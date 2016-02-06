@@ -77,5 +77,13 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
      */
     public abstract int getViewType(int position);
 
+    /**
+     * Called when RecyclerView needs a new ViewHolder of the given type to represent
+     * an item. This is the same as the onCreateViewHolder method in RecyclerView.Adapter,
+     * except that it internally detects and handles the creation on the loading footer
+     * @param parent
+     * @param viewType
+     * @return
+     */
     public abstract VH onCreateView(ViewGroup parent, int viewType);
 }

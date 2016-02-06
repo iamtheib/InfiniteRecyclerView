@@ -108,7 +108,7 @@ public class InfiniteRecyclerView extends RecyclerView {
     }
 
     /**
-     * Set as false when you don't want the recycler view to load more data
+     * Set as false when you don't want the recycler view to load more data. This will also remove the loading view
      * @param loadMore
      */
     @SuppressWarnings("unused")
