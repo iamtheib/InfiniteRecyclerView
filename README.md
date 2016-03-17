@@ -1,3 +1,4 @@
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-InfiniteRecyclerView-green.svg?style=true)](https://android-arsenal.com/details/1/3277)
 Infinite Recycler View
 =================
 
@@ -11,12 +12,18 @@ Change-logs
 -------
 Check out the [Release Notes](https://github.com/saurabharora90/InfiniteRecyclerView/releases "Releases") for the change-logs in each release.
 
+Demo
+-------
+This is the sample app in action:
+
+![Demo](https://raw.githubusercontent.com/saurabharora90/InfiniteRecyclerView/master/assets/demo.gif)
+
 Usage
 -------
 Add a dependency to your `build.gradle`:
 
     dependencies {
-    compile 'com.sa90.infiniterecyclerview:library:1.1'
+    compile 'com.sa90.infiniterecyclerview:library:1.0'
 }
 
 and replace your recycler view with:
@@ -41,7 +48,7 @@ API For InfiniteRecyclerView
 
 Customization
 -------
-Currently the library offers the following customization options from xml:
+Currently the library offers the following customization options:
 
  - `irv_visible_threshold`: Controls the number of scrollable items left (threshold) in the list before `OnLoadMoreListener` will be called
 
