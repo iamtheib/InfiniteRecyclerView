@@ -108,6 +108,19 @@ public class InfiniteRecyclerView extends RecyclerView {
     }
 
     /**
+     * This informs the RecyclerView that <code>itemCount</code> more data has been loaded,
+     * starting from <code>positionStart</code>
+     *
+     * This also calls the attached adapter's {@link RecyclerView.Adapter#notifyItemRangeInserted(int, int)} method,
+     * so the implementing class only needs to call this method
+     */
+    @SuppressWarnings("unused")
+    public void moreDataLoaded(int positionStart, int itemCount) {
+        loading = false;
+        mAdapter.notifyItemRangeInserted(positionStart, itemCount);
+    }
+
+    /**
      * Set as false when you don't want the recycler view to load more data. This will also remove the loading view
      * @param loadMore
      */
