@@ -23,7 +23,7 @@ Usage
 Add a dependency to your `build.gradle`:
 
     dependencies {
-    compile 'com.sa90.infiniterecyclerview:library:1.0'
+    compile 'com.sa90.infiniterecyclerview:library:1.1'
 }
 
 and replace your recycler view with:
