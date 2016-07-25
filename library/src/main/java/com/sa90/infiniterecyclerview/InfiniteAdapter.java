@@ -22,7 +22,7 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     @Override
     public final int getItemCount() {
         int actualCount = getCount();
-        if(getCount() == 0 || !shouldLoadMore)
+        if(actualCount == 0 || !shouldLoadMore)
             return actualCount;
         else
             return actualCount + 1;
@@ -42,11 +42,7 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     }
 
     private boolean isLoadingView(int position) {
-        boolean value = false;
-        if(position == getCount() && shouldLoadMore)
-            value = true;
-
-        return value;
+        return position == getCount() && shouldLoadMore;
     }
 
     public void setShouldLoadMore(boolean shouldLoadMore) {
