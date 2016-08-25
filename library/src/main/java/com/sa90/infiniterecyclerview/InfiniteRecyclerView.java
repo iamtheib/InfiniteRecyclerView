@@ -21,6 +21,8 @@ public class InfiniteRecyclerView extends RecyclerView {
     private static final int VISIBLE_THRESHOLD = 5;
 
     private boolean loading, shouldLoadMore;
+    // Used to indicate the infinite scrolling should be bottom up
+    private boolean isReversedScrolling;
     private OnLoadMoreListener onLoadMoreListener;
     private LinearLayoutManager mLayoutManager;
     private InfiniteAdapter mAdapter;
@@ -47,6 +49,7 @@ public class InfiniteRecyclerView extends RecyclerView {
         addOnScrollListener(mScrollListener);
         loading = false;
         shouldLoadMore = true;
+        isReversedScrolling = false;
         if(attr!=null) {
             mVisibleThreshold = attr.getInt(R.styleable.InfiniteRecyclerView_irv_visible_threshold, VISIBLE_THRESHOLD);
         }
@@ -81,16 +84,23 @@ public class InfiniteRecyclerView extends RecyclerView {
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
-            int visibleItemCount = getChildCount();
-            int totalItemCount = mAdapter.getItemCount();
-            int firstVisibleItem = mLayoutManager.findFirstVisibleItemPosition();
 
-            if (shouldLoadMore && !loading &&
-                    (totalItemCount - visibleItemCount) <= (firstVisibleItem + mVisibleThreshold)) {
-                // End has been reached
-                loading = true;
-                if(onLoadMoreListener!=null)
-                    onLoadMoreListener.onLoadMore();
+            if (shouldLoadMore && !loading) {
+                int firstVisibleItem = mLayoutManager.findFirstVisibleItemPosition();
+                boolean hasReachedThreshold;
+                if (isReversedScrolling) {
+                    hasReachedThreshold = firstVisibleItem <= mVisibleThreshold;
+                } else {
+                    int visibleItemCount = getChildCount();
+                    int totalItemCount = mAdapter.getItemCount();
+                    hasReachedThreshold = (totalItemCount - visibleItemCount) <= (firstVisibleItem + mVisibleThreshold);
+                }
+
+                if (hasReachedThreshold) {
+                    loading = true;
+                    if (onLoadMoreListener != null)
+                        onLoadMoreListener.onLoadMore();
+                }
             }
         }
     };
@@ -128,5 +138,15 @@ public class InfiniteRecyclerView extends RecyclerView {
     public void setShouldLoadMore(boolean loadMore) {
         this.shouldLoadMore = loadMore;
         mAdapter.setShouldLoadMore(shouldLoadMore);
+    }
+
+    /**
+     * Set as true if you want the endless scrolling to be as the user scrolls to the top
+     * of the list, instead of bottom
+     * @param reversed
+     */
+    public void setIsReversedScrolling(boolean reversed) {
+        this.isReversedScrolling = reversed;
+        mAdapter.setIsReversedScrolling(isReversedScrolling);
     }
 }
