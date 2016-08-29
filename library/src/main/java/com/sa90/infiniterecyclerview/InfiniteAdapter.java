@@ -10,6 +10,8 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
 
     private static final int VIEW_TYPE_LOADING = 0;
     private boolean shouldLoadMore = true;
+    // Used to indicate the infinite scrolling should be bottom up
+    private boolean isReversedScrolling = false;
 
     @Override
     public final RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -22,7 +24,11 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     @Override
     public final int getItemCount() {
         int actualCount = getCount();
-        if(actualCount == 0 || !shouldLoadMore)
+        // So as to avoid nasty index calculations, having reversed scrolling does
+        // not affect the item count.
+        // The consequence of this is, while there is more data to load, the first item on
+        // the list will be replaced by the loading view
+        if(actualCount == 0 || !shouldLoadMore || isReversedScrolling)
             return actualCount;
         else
             return actualCount + 1;
@@ -42,11 +48,17 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     }
 
     private boolean isLoadingView(int position) {
-        return position == getCount() && shouldLoadMore;
+        // For reversed scrolling, the loading view is always the top one
+        int loadingViewPosition = isReversedScrolling ? 0 : getCount();
+        return position == loadingViewPosition && shouldLoadMore;
     }
 
     public void setShouldLoadMore(boolean shouldLoadMore) {
         this.shouldLoadMore = shouldLoadMore;
+    }
+
+    public void setIsReversedScrolling(boolean reversed) {
+        this.isReversedScrolling = reversed;
     }
 
     /**
