@@ -13,7 +13,7 @@ import com.sa90.infiniterecyclerview.listener.OnLoadMoreListener;
  * Created by Saurabh on 6/2/16.
  * This supports a callback to notify when to load more items.
  *
- * Implementing Activities/fragments should also call {@link InfiniteRecyclerView#moreDataLoaded(int, int)}
+ * Implementing Activities/fragments should also call moreDataLoaded(int, int)
  * to inform the recycler view that more data has been loaded.
  */
 public class InfiniteRecyclerView extends RecyclerView {
@@ -108,7 +108,7 @@ public class InfiniteRecyclerView extends RecyclerView {
     /**
      * This informs the RecyclerView that data has been loaded.
      *
-     * This also calls the attached adapter's {@link Adapter#notifyDataSetChanged()} method,
+     * This also calls the attached adapter's notifyDataSetChanged() method,
      * so the implementing class only needs to call this method
      */
     @SuppressWarnings("unused")
@@ -122,7 +122,7 @@ public class InfiniteRecyclerView extends RecyclerView {
      * This informs the RecyclerView that <code>itemCount</code> more data has been loaded,
      * starting from <code>positionStart</code>
      *
-     * This also calls the attached adapter's {@link RecyclerView.Adapter#notifyItemRangeInserted(int, int)} method,
+     * This also calls the attached adapter's notifyItemRangeInserted(int, int) method,
      * so the implementing class only needs to call this method
      *
      * @param positionStart Position of the first item that was inserted

@@ -23,7 +23,7 @@ Usage
 Add a dependency to your `build.gradle`:
 
     dependencies {
-    compile 'com.sa90.infiniterecyclerview:library:1.2'
+    compile 'com.sa90.infiniterecyclerview:library:1.3'
 }
 
 and replace your recycler view with:
@@ -43,8 +43,9 @@ The InfiniteAdapter is a abstract class, hence classes extending from it need to
 API For InfiniteRecyclerView
 -------
  - `setOnLoadMoreListener`: Registers a callback to be notified when there is a need to load more data
- - `moreDataLoaded`: This informs the RecyclerView that data has been loaded. This also calls the attached adapter's `notifyDataSetChanged()` method, so the implementing class only needs to call this method
- - `setShouldLoadMore`: Set as false when you don't want the recycler view to load more data. This will also remove the loading view
+ - `moreDataLoaded(int, int)`: This informs the RecyclerView that data has been loaded. This also calls the attached adapter's `notifyItemRangeInserted(int, int)` method, so the implementing class only needs to call this method
+ - `setShouldLoadMore(boolean)`: Set as false when you don't want the recycler view to load more data. This will also remove the loading view
+ - `setIsReversedScrolling(boolean)`: Set as true if you want the endless scrolling to be as the user scrolls to the top of the list, instead of bottom
 
 Customization
 -------
