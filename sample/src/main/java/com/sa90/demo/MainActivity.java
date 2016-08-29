@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     addMoreData();
-                    irv.moreDataLoaded();
+                    irv.moreDataLoaded(15, 10);
                     irv.setShouldLoadMore(false);
                 }
             }, 5000);
