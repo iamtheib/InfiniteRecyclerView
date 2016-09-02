@@ -4,17 +4,17 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.sa90.demo.adapter.SampleAdapter;
-import com.sa90.infiniterecyclerview.InfiniteRecyclerView;
 import com.sa90.infiniterecyclerview.listener.OnLoadMoreListener;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    InfiniteRecyclerView irv;
+    RecyclerView dummyRV;
     SampleAdapter mSampleAdapter;
     ArrayList<String> mDummy;
 
@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setupDummyData();
 
         mSampleAdapter = new SampleAdapter(this, mDummy);
-        irv = (InfiniteRecyclerView) findViewById(R.id.irv);
-        irv.setHasFixedSize(true);
-        irv.setAdapter(mSampleAdapter);
-        irv.setLayoutManager(new LinearLayoutManager(this));
-        irv.setOnLoadMoreListener(mLoadMoreListener);
+        dummyRV = (RecyclerView) findViewById(R.id.dummy_rv);
+        dummyRV.setHasFixedSize(true);
+        dummyRV.setAdapter(mSampleAdapter);
+        dummyRV.setLayoutManager(new LinearLayoutManager(this));
+        mSampleAdapter.setOnLoadMoreListener(mLoadMoreListener);
     }
 
     private OnLoadMoreListener mLoadMoreListener = new OnLoadMoreListener() {
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     addMoreData();
-                    irv.moreDataLoaded(15, 10);
-                    irv.setShouldLoadMore(false);
+                    mSampleAdapter.moreDataLoaded(15, 10);
+                    mSampleAdapter.setShouldLoadMore(false);
                 }
             }, 5000);
         }
