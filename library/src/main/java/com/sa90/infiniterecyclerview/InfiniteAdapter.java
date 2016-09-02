@@ -33,9 +33,9 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     }
 
     /**
-     * Subclasses should override this method, to actually bind the view data
-     * but always call <code>super.onBindViewHolder(ViewHolder, int)</code> to
-     * enable the adapter to know when to actually load more
+     * Subclasses should override this method, to actually bind the view data,
+     * but always call <code>super.onBindViewHolder(holder, position)</code>
+     * to enable the adapter to calculate whether the load more callback should be invoked
      *
      * @param holder
      * @param position
@@ -89,14 +89,25 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
         return position == loadingViewPosition && mShouldLoadMore;
     }
 
+    /**
+     * Set as false when you don't want the recycler view to load more data.
+     * This will also remove the loading view
+     */
     public void setShouldLoadMore(boolean shouldLoadMore) {
         this.mShouldLoadMore = shouldLoadMore;
     }
 
+    /**
+     * Set as true if you want the endless scrolling to be as the user scrolls
+     * to the top of the list, instead of bottom
+     */
     public void setIsReversedScrolling(boolean reversed) {
         this.mIsReversedScrolling = reversed;
     }
 
+    /**
+     * Registers a callback to be notified when there is a need to load more data
+     */
     public void setOnLoadMoreListener(OnLoadMoreListener listener) {
         this.mLoadMoreListener = listener;
     }
@@ -105,7 +116,7 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
      * This informs the adapter that <code>itemCount</code> more data has been loaded,
      * starting from <code>positionStart</code>
      *
-     * This also calls notifyItemRangeInserted(int, int),
+     * This also calls <code>notifyItemRangeInserted(int, int)</code>,
      * so the implementing class only needs to call this method
      *
      * @param positionStart Position of the first item that was inserted
@@ -118,10 +129,11 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
     }
 
     /**
-     * Returns the number of scrollable items left (threshold) in the list before
-     * <code>OnLoadMoreListener</code> will be called
+     * Returns the number of scrollable items that should be left (threshold) in the
+     * list before <code>OnLoadMoreListener</code> will be called
      *
-     * You can override this to return the desired threshold
+     * You can override this to return a preffered threshold,
+     * or leave it to use the default
      *
      * @return integer threshold
      */

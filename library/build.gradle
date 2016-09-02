@@ -31,7 +31,7 @@ ext {
     // module. The artifact name needs to match the name of the library.
     artifact = 'library'
 
-    libraryDescription = 'A custom recycler view and adapter which allows you to have an infinite scrolling list'
+    libraryDescription = 'A recycler view adapter implementation which allows you to have an infinite scrolling list'
     libraryVersion = '1.3'
 
     developerId = 'saurabharora90'
