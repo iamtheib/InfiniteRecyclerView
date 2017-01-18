@@ -1,12 +1,12 @@
-package com.sa90.infiniterecyclerview;
+package com.iamtheib.infiniterecyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
-import com.sa90.infiniterecyclerview.listener.OnLoadMoreListener;
-
 /**
- * Created by Saurabh on 6/2/16.
+ * Modified by iamtheib.
+ *
+ * original version created by Saurabh on 6/2/16.
  *
  * This supports a callback to notify when to load more items.
  *
@@ -14,6 +14,10 @@ import com.sa90.infiniterecyclerview.listener.OnLoadMoreListener;
  * to inform the adapter that more data has been loaded.
  */
 public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter {
+
+    public interface OnLoadMoreListener {
+        void onLoadMore();
+    }
 
     private static final int VIEW_TYPE_LOADING = 0;
 
@@ -125,6 +129,7 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
      */
     public void moreDataLoaded(int positionStart, int itemCount) {
         mIsLoading = false;
+        notifyItemRemoved(positionStart); // remove the loading view
         notifyItemRangeInserted(positionStart, itemCount);
     }
 

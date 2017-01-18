@@ -1,10 +1,10 @@
-package com.sa90.demo.viewholder;
+package com.iamtheib.infiniterecyclerview.demo.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.sa90.demo.R;
+import com.iamtheib.infiniterecyclerview.demo.R;
 
 /**
  * Created by Saurabh on 6/2/16.

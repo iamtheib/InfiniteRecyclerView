@@ -1,4 +1,4 @@
-package com.sa90.demo.adapter;
+package com.iamtheib.infiniterecyclerview.demo.adapter;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
-import com.sa90.demo.R;
-import com.sa90.demo.viewholder.DummyViewHolder;
-import com.sa90.demo.viewholder.LoadingViewHolder;
-import com.sa90.infiniterecyclerview.InfiniteAdapter;
+import com.iamtheib.infiniterecyclerview.demo.R;
+import com.iamtheib.infiniterecyclerview.demo.viewholder.DummyViewHolder;
+import com.iamtheib.infiniterecyclerview.demo.viewholder.LoadingViewHolder;
+import com.iamtheib.infiniterecyclerview.InfiniteAdapter;
 
 import java.util.List;
 

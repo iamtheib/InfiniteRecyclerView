@@ -5,4 +5,4 @@
     android:id="@+id/dummy_rv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sa90.demo.MainActivity" />
+    tools:context="com.iamtheib.infiniterecyclerview.demo.MainActivity" />

@@ -1,4 +1,3 @@
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-InfiniteRecyclerView-green.svg?style=true)](https://android-arsenal.com/details/1/3277)
 Infinite Recycler View
 =================
 
@@ -8,29 +7,25 @@ You can also customize what the loading view at the bottom of the list looks lik
 
 **Note:** This library should be able to work with any layout manager, but has only been tested with `LinearLayoutManager`
 
-Change-logs
--------
-Check out the [Release Notes](https://github.com/saurabharora90/InfiniteRecyclerView/releases "Releases") for the change-logs in each release.
-
 Demo
 -------
 This is the sample app in action:
 
-![Demo](https://raw.githubusercontent.com/saurabharora90/InfiniteRecyclerView/master/assets/demo.gif)
+![Demo](assets/demo.gif)
 
 Usage
 -------
 Add a dependency to your `build.gradle`:
 
     dependencies {
-        compile 'com.sa90.infiniterecyclerview:library:1.3'
+        compile 'com.iamtheib.infiniterecyclerview:library:1.4'
     }
 
 You can use any variation of RecyclerView in your layout, just make sure your adapter extends:
 
-`com.sa90.infiniterecyclerview.InfiniteAdapter`
+`com.iamtheib.infiniterecyclerview.InfiniteAdapter`
 
-InfiniteAdapter is a abstract class, hence classes extending from it need to implement the following methods:
+InfiniteAdapter is an abstract class, hence classes extending from it need to implement the following methods:
 
  - `getLoadingViewHolder(ViewGroup parent)`: Returns the loading view to be shown at the bottom of the list
  - `getCount()`: The count of the number of items in the list. This does not include the loading item
@@ -44,9 +39,34 @@ API For InfiniteAdapter
  - `setOnLoadMoreListener`: Registers a callback to be notified when there is a need to load more data
  - `moreDataLoaded(int, int)`: This informs the adapter that data has been loaded. This also calls `notifyItemRangeInserted(int, int)` method, so the implementing class only needs to call this method
  - `setShouldLoadMore(boolean)`: Set as false when you don't want the recycler view to load more data. This will also remove the loading view
- - `setIsReversedScrolling(boolean)`: Set as true if you want the endless scrolling to be as the user scrolls to the top of the list, instead of bottom
+ - `setIsReversedScrolling(boolean)`: Set as true if you want the endless scrolling to be as the user scrolls to the top of the list, instead of bottom. You probably want to call `layoutManager.setStackFromEnd(true)`
 
 License
+-------
+
+    The MIT License (MIT)
+
+    Copyright (c) 2017 Ibrahim Sikiru
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+Original License
 -------
 
     Copyright 2016 Saurabh Arora
