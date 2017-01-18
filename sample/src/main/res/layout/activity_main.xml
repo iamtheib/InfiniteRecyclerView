@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sa90.infiniterecyclerview.InfiniteRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/irv"
-    app:irv_visible_threshold="2"
+    android:id="@+id/dummy_rv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.sa90.demo.MainActivity">
-
-</com.sa90.infiniterecyclerview.InfiniteRecyclerView>
+    tools:context="com.iamtheib.infiniterecyclerview.demo.MainActivity" />

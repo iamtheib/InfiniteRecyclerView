@@ -1,4 +1,4 @@
-package com.sa90.demo;
+package com.iamtheib.infiniterecyclerview.demo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

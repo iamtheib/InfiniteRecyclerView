@@ -1,4 +1,4 @@
-package com.sa90.demo.adapter;
+package com.iamtheib.infiniterecyclerview.demo.adapter;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 
-import com.sa90.demo.R;
-import com.sa90.demo.viewholder.DummyViewHolder;
-import com.sa90.demo.viewholder.LoadingViewHolder;
-import com.sa90.infiniterecyclerview.InfiniteAdapter;
+import com.iamtheib.infiniterecyclerview.demo.R;
+import com.iamtheib.infiniterecyclerview.demo.viewholder.DummyViewHolder;
+import com.iamtheib.infiniterecyclerview.demo.viewholder.LoadingViewHolder;
+import com.iamtheib.infiniterecyclerview.InfiniteAdapter;
 
 import java.util.List;
 
@@ -31,8 +31,7 @@ public class SampleAdapter extends InfiniteAdapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder getLoadingViewHolder(ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View loadingView = inflater.inflate(R.layout.list_loading_view, parent, false);
+        View loadingView = LayoutInflater.from(mContext).inflate(R.layout.list_loading_view, parent, false);
         return new LoadingViewHolder(loadingView);
     }
 
@@ -48,10 +47,8 @@ public class SampleAdapter extends InfiniteAdapter<RecyclerView.ViewHolder> {
 
     @Override
     public RecyclerView.ViewHolder onCreateView(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View dummyView = inflater.inflate(R.layout.item_dummy, parent, false);
-        DummyViewHolder dummyViewHolder = new DummyViewHolder(dummyView);
-        return dummyViewHolder;
+        View dummyView = LayoutInflater.from(mContext).inflate(R.layout.item_dummy, parent, false);
+        return new DummyViewHolder(dummyView);
     }
 
     @Override
@@ -68,5 +65,12 @@ public class SampleAdapter extends InfiniteAdapter<RecyclerView.ViewHolder> {
         else {
             ((DummyViewHolder) holder).tv.setText(sampleData.get(position));
         }
+
+        super.onBindViewHolder(holder, position);
+    }
+
+    @Override
+    public int getVisibleThreshold() {
+        return 2;
     }
 }
