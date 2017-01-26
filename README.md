@@ -11,7 +11,7 @@ Demo
 -------
 This is the sample app in action:
 
-![Demo](assets/demo.gif)
+![Demo](https://github.com/iamtheib/InfiniteRecyclerView/raw/master/assets/demo.gif)
 
 Usage
 -------
